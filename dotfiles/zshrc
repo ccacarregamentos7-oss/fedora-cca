@@ -289,3 +289,30 @@ alias s24='~/git/servidor-local-dev/scripts/scrcpy-connect.sh'
 alias s24-pair='~/git/servidor-local-dev/scripts/scrcpy-connect.sh pair'
 alias s24-rec='~/git/servidor-local-dev/scripts/scrcpy-connect.sh record'
 alias adb-devices='adb devices -l'
+
+# ── CCA Admin — Centro de Controle ───────────────────────────────────────────
+alias cca='cca-admin'
+alias cca-st='cca-admin status'
+alias cca-svc='cca-admin services'
+alias cca-net='cca-admin network'
+alias cca-scan='cca-admin scan'
+alias cca-dk='cca-admin docker'
+alias cca-pve='cca-admin proxmox'
+alias cca-db='cca-admin db'
+alias cca-dep='cca-admin deploy'
+alias cca-bkp='cca-admin backup'
+
+# Abrir apps de gerenciamento
+alias podman-desktop='flatpak run io.podman_desktop.PodmanDesktop &>/dev/null &'
+alias mission-center='flatpak run io.missioncenter.MissionCenter &>/dev/null &'
+alias open-dbeaver='flatpak run io.dbeaver.DBeaverCommunity &>/dev/null &'
+alias open-winbox='flatpak run com.mikrotik.WinBox &>/dev/null &'
+alias open-remmina='remmina &>/dev/null &'
+
+# SSH rápido para servidores CCA
+alias ssh-dev='ssh root@192.168.50.200'
+alias ssh-pve='ssh root@192.168.50.100'
+alias ssh-prod='ssh root@138.197.46.13'
+alias ssh-ha='ssh root@192.168.50.101'
+alias ssh-zap='ssh root@192.168.50.102'
+alias ssh-mk='ssh admin@192.168.50.1'

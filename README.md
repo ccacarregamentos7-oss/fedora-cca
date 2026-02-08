@@ -1,6 +1,6 @@
-# Fedora CCA — Setup & Dotfiles
+# Fedora CCA — Workstation de Gerenciamento
 
-> Configurações, scripts de setup e otimizações do notebook de desenvolvimento Fedora do Ellon (CCA Carregamentos).
+> Estação de trabalho avançada para gerenciamento de servidores, rede e desenvolvimento — CCA Carregamentos.
 
 ---
 
@@ -28,22 +28,67 @@
 
 ```
 fedora-cca/
-├── dotfiles/           # Arquivos de configuração do sistema
-│   ├── zshrc           # Config do Zsh
-│   ├── gitconfig       # Config global do Git
-│   └── vscode/         # Settings do VS Code
-├── scripts/            # Scripts de automação e setup
-│   ├── setup.sh        # Setup inicial do Fedora
-│   ├── install-dev.sh  # Instalar ferramentas de dev
-│   ├── install-nvidia.sh # Driver NVIDIA + CUDA
-│   └── backup.sh       # Backup de configs
-├── gnome/              # Configs e extensões GNOME
-│   └── dconf-dump.ini  # Dump das configs GNOME
-├── docker/             # Docker configs
-│   └── daemon.json     # Config do Docker daemon
-├── systemd/            # Serviços e timers customizados
-└── docs/               # Documentação
+├── dotfiles/              # Arquivos de configuração do sistema
+│   ├── zshrc              # Config do Zsh
+│   ├── gitconfig          # Config global do Git
+│   └── vscode/            # Settings do VS Code
+├── scripts/               # Scripts de automação e setup
+│   ├── setup.sh           # Setup inicial do Fedora
+│   ├── cca-admin.sh       # 🎛️  Painel centralizado de gerenciamento
+│   ├── install-dev.sh     # Instalar ferramentas de dev
+│   ├── install-nvidia.sh  # Driver NVIDIA + CUDA
+│   ├── install-server-tools.sh # Ferramentas de servidor/rede
+│   ├── setup-remmina.sh   # Perfis Remmina para servidores
+│   └── backup.sh          # Backup de configs
+├── gnome/                 # Configs e extensões GNOME
+│   └── dconf-dump.ini     # Dump das configs GNOME
+├── docker/                # Docker configs
+│   └── daemon.json        # Config do Docker daemon
+├── systemd/               # Serviços e timers customizados
+└── docs/                  # Documentação
 ```
+
+## 🎛️ CCA Admin — Centro de Controle
+
+Comando global `cca-admin` para gerenciar toda a infra CCA direto do terminal:
+
+```bash
+cca-admin status      # Visão geral: ping, portas, CPU/RAM/GPU, Docker
+cca-admin services    # PM2, PostgreSQL, disk no dev server
+cca-admin network     # Interfaces, DNS, Tailscale, portas abertas
+cca-admin scan        # Nmap scan da rede 192.168.50.0/24
+cca-admin docker      # Containers Docker/Podman locais
+cca-admin proxmox     # VMs/LXCs do Proxmox
+cca-admin db          # Bancos de dados (tamanhos, conexões)
+cca-admin deploy      # Status de deploy + git sync dos 18 repos
+
+cca-admin open podman    # Abrir Podman Desktop
+cca-admin open remmina   # Abrir Remmina
+cca-admin open dbeaver   # Abrir DBeaver
+cca-admin open mission   # Abrir Mission Center
+cca-admin open grafana   # Abrir Grafana
+cca-admin open cockpit   # Abrir Cockpit
+cca-admin open winbox    # Abrir WinBox MikroTik
+
+cca-admin ssh dev        # SSH Dev Server (200)
+cca-admin ssh proxmox    # SSH Proxmox
+cca-admin ssh prod       # SSH Produção
+
+cca-admin               # Menu interativo
+```
+
+## 🛠️ Apps de Gerenciamento
+
+| App | Função | Acesso |
+|-----|--------|--------|
+| **Podman Desktop** | Containers visual | `cca-admin open podman` |
+| **Remmina** | Acesso remoto RDP/VNC/SSH | `cca-admin open remmina` |
+| **DBeaver** | Banco de dados | `cca-admin open dbeaver` |
+| **Mission Center** | Monitor de performance | `cca-admin open mission` |
+| **WinBox** | MikroTik | `cca-admin open winbox` |
+| **Cockpit** | Admin web do note | https://localhost:9090 |
+| **Grafana** | Dashboard monitoramento | http://localhost:3000 |
+| **Portainer** | Docker web UI | https://localhost:9443 |
 
 ## 🚀 Setup Rápido (novo Fedora)
 
@@ -51,13 +96,26 @@ fedora-cca/
 # Clonar repo
 git clone git@github.com:ccacarregamentos7-oss/fedora-cca.git ~/git/fedora-cca
 
-# Executar setup completo
+# Setup completo (sistema + dev tools + dotfiles + repos CCA)
 cd ~/git/fedora-cca
-chmod +x scripts/setup.sh
+chmod +x scripts/*.sh
 ./scripts/setup.sh
+
+# Extras opcionais
+./scripts/install-dev.sh           # Ferramentas de dev (lazygit, delta, DBeaver, etc.)
+./scripts/install-server-tools.sh  # Podman Desktop, Remmina, nmap, ansible, etc.
+./scripts/install-nvidia.sh        # Driver NVIDIA + CUDA
+./scripts/setup-remmina.sh         # Criar perfis Remmina
 ```
 
-## 📦 Pacotes Instalados
+## 📦 Ferramentas Instaladas
+
+### GUI de Gerenciamento
+- Podman Desktop (containers)
+- Remmina + RDP/VNC/SSH (acesso remoto)
+- DBeaver Community (banco de dados)
+- Mission Center (monitor de performance)
+- WinBox (MikroTik)
 
 ### Dev Essenciais
 - Node.js 22 (via nvm)
@@ -67,15 +125,28 @@ chmod +x scripts/setup.sh
 - VS Code (com extensões CCA)
 - Android Studio + SDK
 
-### Ferramentas
-- Scrcpy (espelhamento Android)
+### Rede & Servidor
+- nmap, mtr, iperf3, tcpdump, wireshark-cli
+- Ansible + sshpass
+- Cockpit (admin web completo)
 - Tailscale VPN
-- zsh + oh-my-zsh
-- Cockpit (porta 9090)
+- certbot, openssl
+
+### Monitoramento
+- btop, nvtop, iotop
+- lm_sensors, smartmontools
+- lnav (log viewer)
+- sysstat
+
+### Ferramentas CLI
+- ripgrep, fd-find, bat, eza, fzf
+- lazygit, delta, jq, yq
+- Scrcpy (espelhamento Android)
 
 ### NVIDIA
-- Driver proprietário
+- Driver proprietário (akmod)
 - CUDA Toolkit
+- NVIDIA Container Toolkit
 
 ---
 
