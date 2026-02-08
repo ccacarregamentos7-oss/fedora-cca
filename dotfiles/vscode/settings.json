@@ -1,6 +1,20 @@
 {
+  // ═══════════════════════════════════════════════════════════════════════════
+  // CCA CARREGAMENTOS — VS CODE SETTINGS (FEDORA 43)
+  // Otimizado para produtividade máxima
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // EXTENSÕES E UPDATES
+  // ─────────────────────────────────────────────────────────────────────────────
   "extensions.autoUpdate": false,
   "extensions.autoCheckUpdates": false,
+  "update.mode": "manual",
+  "update.showReleaseNotes": false,
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // PERFORMANCE — EXCLUIR PASTAS PESADAS
+  // ─────────────────────────────────────────────────────────────────────────────
   "files.watcherExclude": {
     "**/android/**": true,
     "**/ios/**": true,
@@ -13,6 +27,8 @@
     "**/venv/**": true,
     "**/.next/**": true,
     "**/dist/**": true,
+    "**/.cache/**": true,
+    "**/coverage/**": true
   },
   "search.exclude": {
     "**/.git": true,
@@ -23,105 +39,302 @@
     "**/ios": true,
     "**/android": true,
     "**/node_modules": true,
+    "**/coverage": true,
+    "**/.cache": true
   },
   "files.exclude": {
     "**/.DS_Store": true,
     "**/.git": true,
-    "**/Thumbs.db": true,
+    "**/Thumbs.db": true
   },
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // EDITOR — APARÊNCIA E COMPORTAMENTO
+  // ─────────────────────────────────────────────────────────────────────────────
   "editor.fontSize": 14,
-  "editor.fontFamily": "'Cascadia Code', 'Fira Code', Consolas, monospace",
+  "editor.lineHeight": 1.6,
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'Cascadia Code', 'Fira Code', monospace",
   "editor.fontLigatures": true,
   "editor.wordWrap": "on",
   "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
   "editor.minimap.enabled": false,
-  "editor.bracketPairColorization.enabled": false,
-  "editor.renderWhitespace": "none",
-  "editor.cursorBlinking": "solid",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.renderWhitespace": "selection",
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorStyle": "line",
+  "editor.cursorWidth": 2,
   "editor.cursorSmoothCaretAnimation": "on",
-  "editor.smoothScrolling": false,
-  "editor.semanticHighlighting.enabled": false,
-  "editor.suggest.preview": false,
+  "editor.smoothScrolling": true,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.suggest.preview": true,
   "editor.suggest.showWords": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.linkedEditing": true,
   "editor.quickSuggestions": {
     "other": true,
     "comments": false,
-    "strings": false,
+    "strings": true
   },
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": true,
+  "editor.rulers": [100, 120],
+  "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+  "editor.accessibilitySupport": "off",
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // ARQUIVOS
+  // ─────────────────────────────────────────────────────────────────────────────
   "files.encoding": "utf8",
   "files.autoSave": "afterDelay",
-  "files.autoSaveDelay": 2000,
+  "files.autoSaveDelay": 1500,
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.associations": {
+    "*.env.*": "dotenv",
+    "*.sql": "sql",
+    ".prettierrc": "json",
+    ".eslintrc": "json"
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // TERMINAL — ZSH COMO PADRÃO
+  // ─────────────────────────────────────────────────────────────────────────────
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.profiles.linux": {
+    "zsh": {
+      "path": "/usr/bin/zsh",
+      "icon": "terminal"
+    },
+    "bash": {
+      "path": "/usr/bin/bash"
+    }
+  },
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.fontSize": 13,
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', monospace",
   "terminal.integrated.gpuAcceleration": "on",
   "terminal.integrated.smoothScrolling": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.rightClickBehavior": "copyPaste",
+  // ─────────────────────────────────────────────────────────────────────────────
+  // PYTHON
+  // ─────────────────────────────────────────────────────────────────────────────
   "python.formatting.provider": "black",
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
-  "python.linting.lintOnSave": false,
-  "python.analysis.typeCheckingMode": "off",
-  "python.analysis.autoImportCompletions": false,
-  "python.analysis.indexing": false,
+  "python.linting.lintOnSave": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.indexing": true,
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // GIT
+  // ─────────────────────────────────────────────────────────────────────────────
   "git.autofetch": true,
-  "git.autorefresh": false,
+  "git.autorefresh": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
-  "git.decorations.enabled": false,
-  "git.enableStatusBarSync": false,
-  "typescript.tsserver.maxTsServerMemory": 2048,
+  "git.decorations.enabled": true,
+  "git.enableStatusBarSync": true,
+  "git.openRepositoryInParentFolders": "always",
+  "git.inputValidationLength": 72,
+  "git.inputValidationSubjectLength": 50,
+  // ─────────────────────────────────────────────────────────────────────────────
+  // TYPESCRIPT / JAVASCRIPT
+  // ─────────────────────────────────────────────────────────────────────────────
+  "typescript.tsserver.maxTsServerMemory": 4096,
   "typescript.suggest.enabled": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.inlayHints.parameterNames.enabled": "literals",
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.preferences.importModuleSpecifier": "relative",
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // COPILOT / AI
+  // ─────────────────────────────────────────────────────────────────────────────
   "github.copilot.enable": {
     "*": true,
     "plaintext": true,
     "markdown": true,
     "yaml": true,
+    "sql": true,
+    "json": true,
+    "shellscript": true
   },
   "github.copilot.editor.enableAutoCompletions": true,
-  "workbench.colorTheme": "Default Dark+",
-  "workbench.iconTheme": "vscode-icons",
+  "chat.agent.maxRequests": 9999,
+  "chat.commandCenter.enabled": true,
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // WORKBENCH — APARÊNCIA
+  // ─────────────────────────────────────────────────────────────────────────────
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.productIconTheme": "Default",
   "workbench.startupEditor": "none",
   "workbench.enableExperiments": false,
-  "workbench.list.smoothScrolling": false,
+  "workbench.list.smoothScrolling": true,
   "workbench.tree.indent": 16,
+  "workbench.tree.renderIndentGuides": "always",
   "workbench.settings.enableNaturalLanguageSearch": false,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.showTabs": "multiple",
+  "workbench.editor.tabActionLocation": "right",
+  "workbench.editor.wrapTabs": false,
+  "workbench.editor.decorations.colors": true,
+  "workbench.editor.decorations.badges": true,
+  "workbench.sideBar.location": "left",
+  "workbench.activityBar.location": "side",
+  "workbench.statusBar.visible": true,
+  "workbench.tips.enabled": false,
+  "workbench.layoutControl.enabled": false,
+  // ─────────────────────────────────────────────────────────────────────────────
+  // EXPLORER
+  // ─────────────────────────────────────────────────────────────────────────────
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.compactFolders": false,
-  "chat.commandCenter.enabled": true,
+  "explorer.sortOrder": "default",
+  "explorer.autoReveal": true,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js, ${capture}.d.ts, ${capture}.test.ts, ${capture}.spec.ts",
+    "*.tsx": "${capture}.css, ${capture}.module.css, ${capture}.test.tsx, ${capture}.spec.tsx",
+    "package.json": "package-lock.json, pnpm-lock.yaml, yarn.lock, .npmrc, .nvmrc, tsconfig*.json",
+    "vite.config.*": "vitest.config.*, postcss.config.*, tailwind.config.*",
+    ".env": ".env.*, .env.local, .env.development, .env.production"
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // NAVIGATION / BREADCRUMBS
+  // ─────────────────────────────────────────────────────────────────────────────
+  "breadcrumbs.enabled": true,
+  "breadcrumbs.icons": true,
+  "breadcrumbs.showFiles": true,
+  "breadcrumbs.showSymbols": true,
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // CHAT / AI TOOLS
+  // ─────────────────────────────────────────────────────────────────────────────
+  // ─────────────────────────────────────────────────────────────────────────────
+  // FORMATADORES POR LINGUAGEM
+  // ─────────────────────────────────────────────────────────────────────────────
   "[python]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.tabSize": 4,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit",
-    },
+      "source.organizeImports": "explicit"
+    }
   },
   "[markdown]": {
     "editor.wordWrap": "on",
     "editor.formatOnSave": false,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
+    "editor.tabSize": 2
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
   },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.tabSize": 2
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format",
+    "editor.tabSize": 2
+  },
+  "[sql]": {
+    "editor.tabSize": 2
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // TELEMETRIA (DESATIVADA)
+  // ─────────────────────────────────────────────────────────────────────────────
   "telemetry.telemetryLevel": "off",
   "redhat.telemetry.enabled": false,
-  "breadcrumbs.enabled": false,
-  "update.mode": "manual",
-  "update.showReleaseNotes": false,
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // ERROR LENS — MOSTRAR ERROS INLINE
+  // ─────────────────────────────────────────────────────────────────────────────
+  "errorLens.enabled": true,
+  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+  "errorLens.delay": 500,
+  "errorLens.fontStyleItalic": true,
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // GITLENS
+  // ─────────────────────────────────────────────────────────────────────────────
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "gitlens.currentLine.enabled": true,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.codeLens.enabled": false,
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // NPM / PACKAGES
+  // ─────────────────────────────────────────────────────────────────────────────
+  "npm.autoDetect": "off",
+  "npm.packageManager": "pnpm",
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // MATERIAL ICON THEME — CONFIGURAÇÃO
+  // ─────────────────────────────────────────────────────────────────────────────
+  "material-icon-theme.folders.theme": "specific",
+  "material-icon-theme.folders.color": "#42a5f5",
+  "material-icon-theme.activeIconPack": "react_redux",
+  "material-icon-theme.hidesExplorerArrows": false,
   "yaml.schemas": {
     "file:///c%3A/Users/ccaca/.vscode/extensions/continue.continue-1.2.14-win32-x64/config-yaml-schema.json": [
       ".continue/**/*.yaml",

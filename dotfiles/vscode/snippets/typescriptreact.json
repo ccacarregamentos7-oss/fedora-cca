@@ -1,0 +1,422 @@
+{
+  // ═══════════════════════════════════════════════════════════════════════════
+  // REACT — COMPONENTES E HOOKS (CCA CARREGAMENTOS)
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "React Functional Component": {
+    "prefix": ["rfc", "comp"],
+    "body": [
+      "interface ${1:${TM_FILENAME_BASE}}Props {",
+      "  $2",
+      "}",
+      "",
+      "export function ${1:${TM_FILENAME_BASE}}({ $3 }: ${1:${TM_FILENAME_BASE}}Props) {",
+      "  return (",
+      "    <div className=\"$4\">",
+      "      $0",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "React Functional Component com TypeScript"
+  },
+
+  "React Component with useState": {
+    "prefix": ["rfcs", "compstate"],
+    "body": [
+      "import { useState } from 'react';",
+      "",
+      "interface ${1:${TM_FILENAME_BASE}}Props {",
+      "  $2",
+      "}",
+      "",
+      "export function ${1:${TM_FILENAME_BASE}}({ $3 }: ${1:${TM_FILENAME_BASE}}Props) {",
+      "  const [${4:state}, set${4/(.*)/${1:/capitalize}/}] = useState<${5:string}>($6);",
+      "",
+      "  return (",
+      "    <div className=\"$7\">",
+      "      $0",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "React Component com useState"
+  },
+
+  "React useEffect": {
+    "prefix": ["uef", "useeffect"],
+    "body": [
+      "useEffect(() => {",
+      "  $1",
+      "",
+      "  return () => {",
+      "    $2",
+      "  };",
+      "}, [$3]);"
+    ],
+    "description": "useEffect com cleanup"
+  },
+
+  "React useState": {
+    "prefix": ["ust", "usestate"],
+    "body": [
+      "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState<${2:string}>($3);"
+    ],
+    "description": "useState hook"
+  },
+
+  "React useMemo": {
+    "prefix": ["umem", "usememo"],
+    "body": [
+      "const ${1:memoizedValue} = useMemo(() => {",
+      "  return $2;",
+      "}, [$3]);"
+    ],
+    "description": "useMemo hook"
+  },
+
+  "React useCallback": {
+    "prefix": ["ucb", "usecallback"],
+    "body": [
+      "const ${1:callback} = useCallback(($2) => {",
+      "  $3",
+      "}, [$4]);"
+    ],
+    "description": "useCallback hook"
+  },
+
+  "React useRef": {
+    "prefix": ["uref", "useref"],
+    "body": [
+      "const ${1:ref} = useRef<${2:HTMLDivElement}>(null);"
+    ],
+    "description": "useRef hook"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // tRPC — API (Sistema CCA usa tRPC)
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "tRPC Query Hook": {
+    "prefix": ["trpcq", "usequery"],
+    "body": [
+      "const { data: ${1:data}, isLoading, error } = trpc.${2:router}.${3:procedure}.useQuery($4);"
+    ],
+    "description": "tRPC useQuery"
+  },
+
+  "tRPC Mutation Hook": {
+    "prefix": ["trpcm", "usemutation"],
+    "body": [
+      "const ${1:mutation} = trpc.${2:router}.${3:procedure}.useMutation({",
+      "  onSuccess: (data) => {",
+      "    $4",
+      "  },",
+      "  onError: (error) => {",
+      "    console.error('Erro:', error.message);",
+      "  },",
+      "});"
+    ],
+    "description": "tRPC useMutation"
+  },
+
+  "tRPC Router Procedure": {
+    "prefix": ["trproc", "procedure"],
+    "body": [
+      "${1:procedureName}: publicProcedure",
+      "  .input(z.object({",
+      "    ${2:id}: z.${3:string}(),",
+      "  }))",
+      "  .query(async ({ input, ctx }) => {",
+      "    $0",
+      "  }),"
+    ],
+    "description": "tRPC Router Procedure"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // DRIZZLE ORM — Database (Sistema CCA usa Drizzle)
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "Drizzle Select Query": {
+    "prefix": ["dsel", "drizzleselect"],
+    "body": [
+      "const ${1:result} = await db",
+      "  .select()",
+      "  .from(${2:table})",
+      "  .where(eq(${2:table}.${3:id}, ${4:value}));"
+    ],
+    "description": "Drizzle SELECT query"
+  },
+
+  "Drizzle Insert": {
+    "prefix": ["dins", "drizzleinsert"],
+    "body": [
+      "const ${1:result} = await db",
+      "  .insert(${2:table})",
+      "  .values({",
+      "    ${3:campo}: ${4:valor},",
+      "  })",
+      "  .returning();"
+    ],
+    "description": "Drizzle INSERT"
+  },
+
+  "Drizzle Update": {
+    "prefix": ["dupd", "drizzleupdate"],
+    "body": [
+      "const ${1:result} = await db",
+      "  .update(${2:table})",
+      "  .set({",
+      "    ${3:campo}: ${4:valor},",
+      "  })",
+      "  .where(eq(${2:table}.${5:id}, ${6:value}))",
+      "  .returning();"
+    ],
+    "description": "Drizzle UPDATE"
+  },
+
+  "Drizzle Table Schema": {
+    "prefix": ["dtable", "drizzletable"],
+    "body": [
+      "export const ${1:tableName} = pgTable('${2:table_name}', {",
+      "  id: serial('id').primaryKey(),",
+      "  ${3:nome}: varchar('${3:nome}', { length: 255 }).notNull(),",
+      "  createdAt: timestamp('created_at').defaultNow().notNull(),",
+      "  updatedAt: timestamp('updated_at').defaultNow().notNull(),",
+      "});"
+    ],
+    "description": "Drizzle Table Schema"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // TAILWIND CSS
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "Tailwind Flex Center": {
+    "prefix": ["twcenter", "flexcenter"],
+    "body": ["flex items-center justify-center"],
+    "description": "Flex center both axes"
+  },
+
+  "Tailwind Flex Between": {
+    "prefix": ["twbetween", "flexbetween"],
+    "body": ["flex items-center justify-between"],
+    "description": "Flex space-between"
+  },
+
+  "Tailwind Card": {
+    "prefix": ["twcard", "card"],
+    "body": ["bg-card rounded-lg border p-4 shadow-sm"],
+    "description": "Card com shadcn/ui"
+  },
+
+  "Tailwind Grid": {
+    "prefix": ["twgrid", "grid"],
+    "body": ["grid grid-cols-${1:3} gap-${2:4}"],
+    "description": "Grid layout"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SHADCN/UI — COMPONENTES
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "shadcn Button": {
+    "prefix": ["sbutton", "btn"],
+    "body": [
+      "<Button variant=\"${1|default,destructive,outline,secondary,ghost,link|}\" size=\"${2|default,sm,lg,icon|}\" onClick={$3}>",
+      "  $4",
+      "</Button>"
+    ],
+    "description": "shadcn/ui Button"
+  },
+
+  "shadcn Card": {
+    "prefix": ["scard"],
+    "body": [
+      "<Card>",
+      "  <CardHeader>",
+      "    <CardTitle>$1</CardTitle>",
+      "    <CardDescription>$2</CardDescription>",
+      "  </CardHeader>",
+      "  <CardContent>",
+      "    $0",
+      "  </CardContent>",
+      "</Card>"
+    ],
+    "description": "shadcn/ui Card completo"
+  },
+
+  "shadcn Dialog": {
+    "prefix": ["sdialog"],
+    "body": [
+      "<Dialog open={${1:open}} onOpenChange={${2:setOpen}}>",
+      "  <DialogTrigger asChild>",
+      "    <Button>$3</Button>",
+      "  </DialogTrigger>",
+      "  <DialogContent>",
+      "    <DialogHeader>",
+      "      <DialogTitle>$4</DialogTitle>",
+      "      <DialogDescription>$5</DialogDescription>",
+      "    </DialogHeader>",
+      "    $0",
+      "  </DialogContent>",
+      "</Dialog>"
+    ],
+    "description": "shadcn/ui Dialog"
+  },
+
+  "shadcn Form Field": {
+    "prefix": ["sfield", "formfield"],
+    "body": [
+      "<FormField",
+      "  control={form.control}",
+      "  name=\"${1:fieldName}\"",
+      "  render={({ field }) => (",
+      "    <FormItem>",
+      "      <FormLabel>$2</FormLabel>",
+      "      <FormControl>",
+      "        <Input placeholder=\"$3\" {...field} />",
+      "      </FormControl>",
+      "      <FormMessage />",
+      "    </FormItem>",
+      "  )}",
+      "/>"
+    ],
+    "description": "shadcn/ui Form Field"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // TYPESCRIPT — TIPOS E INTERFACES
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "TypeScript Interface": {
+    "prefix": ["int", "interface"],
+    "body": [
+      "interface ${1:Name} {",
+      "  ${2:property}: ${3:type};$0",
+      "}"
+    ],
+    "description": "TypeScript interface"
+  },
+
+  "TypeScript Type": {
+    "prefix": ["typ", "type"],
+    "body": [
+      "type ${1:Name} = {",
+      "  ${2:property}: ${3:type};$0",
+      "};"
+    ],
+    "description": "TypeScript type"
+  },
+
+  "TypeScript Async Function": {
+    "prefix": ["afn", "asyncfn"],
+    "body": [
+      "async function ${1:name}(${2:params}): Promise<${3:void}> {",
+      "  $0",
+      "}"
+    ],
+    "description": "Async function"
+  },
+
+  "TypeScript Arrow Async": {
+    "prefix": ["aafn", "arrowasync"],
+    "body": [
+      "const ${1:name} = async (${2:params}): Promise<${3:void}> => {",
+      "  $0",
+      "};"
+    ],
+    "description": "Arrow async function"
+  },
+
+  "Try Catch Block": {
+    "prefix": ["trycatch", "try"],
+    "body": [
+      "try {",
+      "  $1",
+      "} catch (error) {",
+      "  console.error('Erro:', error);",
+      "  $0",
+      "}"
+    ],
+    "description": "Try-catch block"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // CCA ESPECÍFICO
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "CCA API Route": {
+    "prefix": ["ccaapi", "apiroute"],
+    "body": [
+      "// ${1:Descrição da rota}",
+      "app.${2|get,post,put,delete|}('${3:/api/admin/}${4:endpoint}', async (req, res) => {",
+      "  try {",
+      "    const pool = req.dbPool;",
+      "    const { rows } = await pool.query(`",
+      "      SELECT * FROM ${5:schema}.${6:tabela}",
+      "      $7",
+      "    `);",
+      "    res.json(rows);",
+      "  } catch (error) {",
+      "    console.error('Erro:', error);",
+      "    res.status(500).json({ error: 'Erro interno' });",
+      "  }",
+      "});"
+    ],
+    "description": "CCA API Route com pool multi-DB"
+  },
+
+  "CCA Console Log": {
+    "prefix": ["clog", "cl"],
+    "body": [
+      "console.log('${1:label}:', ${1:label});"
+    ],
+    "description": "Console log com label"
+  },
+
+  "CCA Table Row Click": {
+    "prefix": ["trowclick"],
+    "body": [
+      "<TableRow",
+      "  key={${1:item}.id}",
+      "  className=\"cursor-pointer hover:bg-muted/50\"",
+      "  onClick={() => ${2:handleClick}(${1:item})}",
+      ">",
+      "  <TableCell>$0</TableCell>",
+      "</TableRow>"
+    ],
+    "description": "TableRow clicável"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // IMPORTS COMUNS
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "Import React": {
+    "prefix": ["imr"],
+    "body": ["import { ${1:useState} } from 'react';"],
+    "description": "Import React hooks"
+  },
+
+  "Import shadcn Button": {
+    "prefix": ["imbtn"],
+    "body": ["import { Button } from '@/components/ui/button';"],
+    "description": "Import Button"
+  },
+
+  "Import shadcn Card": {
+    "prefix": ["imcard"],
+    "body": [
+      "import {",
+      "  Card,",
+      "  CardContent,",
+      "  CardDescription,",
+      "  CardHeader,",
+      "  CardTitle,",
+      "} from '@/components/ui/card';"
+    ],
+    "description": "Import Card components"
+  }
+}

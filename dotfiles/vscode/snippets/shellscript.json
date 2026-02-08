@@ -1,0 +1,358 @@
+{
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SHELL/BASH SNIPPETS — CCA CARREGAMENTOS
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "Bash Script Header": {
+    "prefix": ["shebang", "bash"],
+    "body": [
+      "#!/usr/bin/env bash",
+      "# ============================================================================",
+      "# ${1:Script Name} — ${2:Description}",
+      "# CCA Carregamentos",
+      "# ============================================================================",
+      "set -uo pipefail",
+      "",
+      "$0"
+    ],
+    "description": "Bash script header com shebang"
+  },
+
+  "Shell Colors": {
+    "prefix": ["colors", "shellcolors"],
+    "body": [
+      "# Cores",
+      "RED='\\033[0;31m'",
+      "GREEN='\\033[0;32m'",
+      "YELLOW='\\033[1;33m'",
+      "BLUE='\\033[0;34m'",
+      "CYAN='\\033[0;36m'",
+      "NC='\\033[0m'",
+      "BOLD='\\033[1m'",
+      "",
+      "info()    { echo -e \"\\${BLUE}[INFO]\\${NC} \\$*\"; }",
+      "success() { echo -e \"\\${GREEN}[✔]\\${NC} \\$*\"; }",
+      "warn()    { echo -e \"\\${YELLOW}[⚠]\\${NC} \\$*\"; }",
+      "error()   { echo -e \"\\${RED}[✘]\\${NC} \\$*\"; }"
+    ],
+    "description": "Shell color definitions"
+  },
+
+  "If Statement": {
+    "prefix": ["if", "ifthen"],
+    "body": [
+      "if [[ ${1:condition} ]]; then",
+      "  $0",
+      "fi"
+    ],
+    "description": "If statement"
+  },
+
+  "If Else": {
+    "prefix": ["ifelse", "ife"],
+    "body": [
+      "if [[ ${1:condition} ]]; then",
+      "  $2",
+      "else",
+      "  $0",
+      "fi"
+    ],
+    "description": "If-else statement"
+  },
+
+  "Case Statement": {
+    "prefix": ["case", "switch"],
+    "body": [
+      "case \"\\$${1:var}\" in",
+      "  ${2:pattern1})",
+      "    $3",
+      "    ;;",
+      "  ${4:pattern2})",
+      "    $5",
+      "    ;;",
+      "  *)",
+      "    $0",
+      "    ;;",
+      "esac"
+    ],
+    "description": "Case/switch statement"
+  },
+
+  "For Loop": {
+    "prefix": ["for", "forloop"],
+    "body": [
+      "for ${1:item} in ${2:items}; do",
+      "  $0",
+      "done"
+    ],
+    "description": "For loop"
+  },
+
+  "While Loop": {
+    "prefix": ["while", "whileloop"],
+    "body": [
+      "while [[ ${1:condition} ]]; do",
+      "  $0",
+      "done"
+    ],
+    "description": "While loop"
+  },
+
+  "Function": {
+    "prefix": ["fn", "func", "function"],
+    "body": [
+      "${1:function_name}() {",
+      "  local ${2:arg}=\"\\$1\"",
+      "  $0",
+      "}"
+    ],
+    "description": "Shell function"
+  },
+
+  "Read Input": {
+    "prefix": ["read", "input"],
+    "body": [
+      "read -rp \"${1:Prompt}: \" ${2:variable}"
+    ],
+    "description": "Read user input"
+  },
+
+  "Check Command Exists": {
+    "prefix": ["cmdexists", "checkcommand"],
+    "body": [
+      "if ! command -v ${1:command} &> /dev/null; then",
+      "  error \"${1:command} não encontrado\"",
+      "  exit 1",
+      "fi"
+    ],
+    "description": "Check if command exists"
+  },
+
+  "Check File Exists": {
+    "prefix": ["fileexists", "checkfile"],
+    "body": [
+      "if [[ ! -f \"${1:file}\" ]]; then",
+      "  error \"Arquivo não encontrado: ${1:file}\"",
+      "  exit 1",
+      "fi"
+    ],
+    "description": "Check if file exists"
+  },
+
+  "Check Dir Exists": {
+    "prefix": ["direxists", "checkdir"],
+    "body": [
+      "if [[ ! -d \"${1:directory}\" ]]; then",
+      "  mkdir -p \"${1:directory}\"",
+      "fi"
+    ],
+    "description": "Check and create directory"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SSH E SERVIDORES CCA
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "SSH Command": {
+    "prefix": ["ssh", "sshcmd"],
+    "body": [
+      "ssh ${1|root@192.168.50.200,root@138.197.46.13,root@192.168.50.100|} '${2:command}'"
+    ],
+    "description": "SSH command to CCA servers"
+  },
+
+  "SCP Upload": {
+    "prefix": ["scp", "scpup"],
+    "body": [
+      "scp ${1:local_file} ${2|root@192.168.50.200,root@138.197.46.13|}:${3:/tmp/}"
+    ],
+    "description": "SCP upload to server"
+  },
+
+  "SSH Port Check": {
+    "prefix": ["portcheck", "checkport"],
+    "body": [
+      "nc -zv ${1:host} ${2:port} 2>&1"
+    ],
+    "description": "Check if port is open"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // DOCKER
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "Docker Exec": {
+    "prefix": ["dexec", "dockerexec"],
+    "body": [
+      "docker exec -it ${1:container} ${2:/bin/bash}"
+    ],
+    "description": "Docker exec interactive"
+  },
+
+  "Docker Logs": {
+    "prefix": ["dlogs", "dockerlogs"],
+    "body": [
+      "docker logs -f --tail=${1:100} ${2:container}"
+    ],
+    "description": "Docker logs follow"
+  },
+
+  "Docker Compose Up": {
+    "prefix": ["dcup", "composeup"],
+    "body": [
+      "docker-compose up -d ${1:--build}"
+    ],
+    "description": "Docker compose up"
+  },
+
+  "Docker Compose Down": {
+    "prefix": ["dcdown", "composedown"],
+    "body": [
+      "docker-compose down ${1:-v}"
+    ],
+    "description": "Docker compose down"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // POSTGRESQL
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "PSQL Query": {
+    "prefix": ["psql", "pgquery"],
+    "body": [
+      "psql -h ${1|192.168.50.200,localhost|} -U ${2:postgres} -d ${3:cca_diarias} -c \"${4:SELECT 1};\""
+    ],
+    "description": "PostgreSQL query"
+  },
+
+  "PSQL Interactive": {
+    "prefix": ["psqli", "pginteractive"],
+    "body": [
+      "psql -h ${1|192.168.50.200,localhost|} -U ${2:postgres} -d ${3:cca_diarias}"
+    ],
+    "description": "PostgreSQL interactive"
+  },
+
+  "PG Dump": {
+    "prefix": ["pgdump", "backup"],
+    "body": [
+      "pg_dump -h ${1:host} -U ${2:postgres} -d ${3:database} --no-owner > ${4:backup.sql}"
+    ],
+    "description": "pg_dump backup"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // GIT
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "Git Commit": {
+    "prefix": ["gcommit", "commit"],
+    "body": [
+      "git add -A && git commit -m \"${1|feat,fix,docs,refactor,chore|}: ${2:description}\""
+    ],
+    "description": "Git add and commit"
+  },
+
+  "Git Push": {
+    "prefix": ["gpush", "push"],
+    "body": [
+      "git push origin ${1:main}"
+    ],
+    "description": "Git push"
+  },
+
+  "Git Pull": {
+    "prefix": ["gpull", "pull"],
+    "body": [
+      "git pull --ff-only origin ${1:main}"
+    ],
+    "description": "Git pull fast-forward"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // CURL E APIs
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "Curl GET": {
+    "prefix": ["curlget", "cget"],
+    "body": [
+      "curl -s \"${1:http://192.168.50.200:3001/api/admin/}${2:endpoint}\" | jq ."
+    ],
+    "description": "Curl GET with jq"
+  },
+
+  "Curl POST JSON": {
+    "prefix": ["curlpost", "cpost"],
+    "body": [
+      "curl -s -X POST \"${1:url}\" \\\\",
+      "  -H \"Content-Type: application/json\" \\\\",
+      "  -d '{\"${2:key}\": \"${3:value}\"}' | jq ."
+    ],
+    "description": "Curl POST JSON"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // GSETTINGS (GNOME)
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "Gsettings Set": {
+    "prefix": ["gset", "gsettingsset"],
+    "body": [
+      "gsettings set ${1:org.gnome.desktop.interface} ${2:property} '${3:value}'"
+    ],
+    "description": "gsettings set"
+  },
+
+  "Gsettings Get": {
+    "prefix": ["gget", "gsettingsget"],
+    "body": [
+      "gsettings get ${1:org.gnome.desktop.interface} ${2:property}"
+    ],
+    "description": "gsettings get"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // UTILIDADES
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "Print Banner": {
+    "prefix": ["banner", "header"],
+    "body": [
+      "echo -e \"\\${CYAN}\\${BOLD}\"",
+      "echo \"╔══════════════════════════════════════════════════════════════╗\"",
+      "echo \"║              ${1:TITLE}              ║\"",
+      "echo \"╚══════════════════════════════════════════════════════════════╝\"",
+      "echo -e \"\\${NC}\""
+    ],
+    "description": "Print ASCII banner"
+  },
+
+  "Confirm Prompt": {
+    "prefix": ["confirm", "yesno"],
+    "body": [
+      "read -rp \"${1:Confirmar?} [y/N]: \" confirm",
+      "if [[ \"\\$confirm\" != [yY] ]]; then",
+      "  echo \"Cancelado.\"",
+      "  exit 0",
+      "fi"
+    ],
+    "description": "Yes/No confirmation"
+  },
+
+  "Error Exit": {
+    "prefix": ["errexit", "dieerror"],
+    "body": [
+      "error \"${1:Mensagem de erro}\"",
+      "exit 1"
+    ],
+    "description": "Error and exit"
+  },
+
+  "Timestamp": {
+    "prefix": ["timestamp", "date"],
+    "body": [
+      "\\$(date '+%Y-%m-%d %H:%M:%S')"
+    ],
+    "description": "Current timestamp"
+  }
+}

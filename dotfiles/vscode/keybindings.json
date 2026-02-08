@@ -1,0 +1,400 @@
+[
+  // ═══════════════════════════════════════════════════════════════════════════
+  // CCA CARREGAMENTOS — VS CODE KEYBINDINGS
+  // Atalhos customizados para produtividade máxima
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // TERMINAL E COMANDOS CCA
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "workbench.action.terminal.new"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": { "text": "cca\n" },
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+alt+s",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": { "text": "cca-admin status\n" },
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+alt+t",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": { "text": "cca-theme\n" },
+    "when": "terminalFocus"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // NAVEGAÇÃO ENTRE PAINÉIS
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "ctrl+1",
+    "command": "workbench.action.focusFirstEditorGroup"
+  },
+  {
+    "key": "ctrl+2",
+    "command": "workbench.action.focusSidebar"
+  },
+  {
+    "key": "ctrl+3",
+    "command": "workbench.action.focusPanel"
+  },
+  {
+    "key": "alt+1",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "alt+2",
+    "command": "workbench.view.search"
+  },
+  {
+    "key": "alt+3",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "alt+4",
+    "command": "workbench.view.debug"
+  },
+  {
+    "key": "alt+5",
+    "command": "workbench.view.extensions"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // EDIÇÃO AVANÇADA
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "ctrl+d",
+    "command": "editor.action.addSelectionToNextFindMatch"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "command": "editor.action.copyLinesDownAction"
+  },
+  {
+    "key": "alt+up",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+down",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+k",
+    "command": "editor.action.deleteLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "expandLineSelection"
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "editor.action.selectHighlights"
+  },
+  {
+    "key": "ctrl+/",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+/",
+    "command": "editor.action.blockComment",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // NAVEGAÇÃO NO CÓDIGO
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "f12",
+    "command": "editor.action.revealDefinition"
+  },
+  {
+    "key": "alt+f12",
+    "command": "editor.action.peekDefinition"
+  },
+  {
+    "key": "shift+f12",
+    "command": "editor.action.goToReferences"
+  },
+  {
+    "key": "ctrl+shift+o",
+    "command": "workbench.action.gotoSymbol"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.showAllSymbols"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "workbench.action.gotoLine"
+  },
+  {
+    "key": "ctrl+shift+p",
+    "command": "workbench.action.showCommands"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // GIT RÁPIDO
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "ctrl+shift+g",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "ctrl+alt+g",
+    "command": "git-graph.view"
+  },
+  {
+    "key": "ctrl+shift+m",
+    "command": "workbench.actions.view.problems"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // AI / COPILOT
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "ctrl+i",
+    "command": "workbench.action.chat.open"
+  },
+  {
+    "key": "ctrl+shift+i",
+    "command": "workbench.action.chat.openInNewWindow"
+  },
+  {
+    "key": "ctrl+alt+i",
+    "command": "inlineChat.start",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "github.copilot.acceptCursorPanelSolution",
+    "when": "github.copilot.activated && github.copilot.panelVisible"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // ARQUIVOS E ABAS
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "ctrl+w",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "ctrl+shift+t",
+    "command": "workbench.action.reopenClosedEditor"
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.nextEditor"
+  },
+  {
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.previousEditor"
+  },
+  {
+    "key": "ctrl+k ctrl+w",
+    "command": "workbench.action.closeAllEditors"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "workbench.action.newWindow"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // SPLIT E LAYOUT
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "ctrl+\\",
+    "command": "workbench.action.splitEditor"
+  },
+  {
+    "key": "ctrl+shift+\\",
+    "command": "workbench.action.splitEditorDown"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "f11",
+    "command": "workbench.action.toggleFullScreen"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // FIND / REPLACE
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "ctrl+f",
+    "command": "actions.find"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "editor.action.startFindReplaceAction"
+  },
+  {
+    "key": "ctrl+shift+f",
+    "command": "workbench.action.findInFiles"
+  },
+  {
+    "key": "ctrl+shift+h",
+    "command": "workbench.action.replaceInFiles"
+  },
+  {
+    "key": "f3",
+    "command": "editor.action.nextMatchFindAction"
+  },
+  {
+    "key": "shift+f3",
+    "command": "editor.action.previousMatchFindAction"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // FORMATAÇÃO
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "shift+alt+f",
+    "command": "editor.action.formatDocument"
+  },
+  {
+    "key": "ctrl+k ctrl+f",
+    "command": "editor.action.formatSelection"
+  },
+  {
+    "key": "ctrl+.",
+    "command": "editor.action.quickFix"
+  },
+  {
+    "key": "f2",
+    "command": "editor.action.rename"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // DEBUG
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "f5",
+    "command": "workbench.action.debug.start"
+  },
+  {
+    "key": "shift+f5",
+    "command": "workbench.action.debug.stop"
+  },
+  {
+    "key": "f9",
+    "command": "editor.debug.action.toggleBreakpoint"
+  },
+  {
+    "key": "f10",
+    "command": "workbench.action.debug.stepOver"
+  },
+  {
+    "key": "f11",
+    "command": "workbench.action.debug.stepInto",
+    "when": "debugState == 'stopped'"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // TASKS
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "ctrl+shift+b",
+    "command": "workbench.action.tasks.build"
+  },
+  {
+    "key": "ctrl+shift+r",
+    "command": "workbench.action.tasks.runTask"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // MARKDOWN PREVIEW
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "ctrl+shift+v",
+    "command": "markdown.showPreview",
+    "when": "editorLangId == 'markdown'"
+  },
+  {
+    "key": "ctrl+k v",
+    "command": "markdown.showPreviewToSide",
+    "when": "editorLangId == 'markdown'"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // FOLD/UNFOLD
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "ctrl+shift+[",
+    "command": "editor.fold"
+  },
+  {
+    "key": "ctrl+shift+]",
+    "command": "editor.unfold"
+  },
+  {
+    "key": "ctrl+k ctrl+0",
+    "command": "editor.foldAll"
+  },
+  {
+    "key": "ctrl+k ctrl+j",
+    "command": "editor.unfoldAll"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // MULTI-CURSOR
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "ctrl+alt+up",
+    "command": "editor.action.insertCursorAbove"
+  },
+  {
+    "key": "ctrl+alt+down",
+    "command": "editor.action.insertCursorBelow"
+  },
+  {
+    "key": "shift+alt+i",
+    "command": "editor.action.insertCursorAtEndOfEachLineSelected"
+  },
+  {
+    "key": "escape",
+    "command": "removeSecondaryCursors",
+    "when": "editorHasMultipleSelections"
+  },
+
+  // ────────────────────────────────────────────────────────────────────────────
+  // ZEN MODE
+  // ────────────────────────────────────────────────────────────────────────────
+  {
+    "key": "ctrl+k z",
+    "command": "workbench.action.toggleZenMode"
+  }
+]

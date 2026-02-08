@@ -1,0 +1,452 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    // ═══════════════════════════════════════════════════════════════════════════
+    // CCA ADMIN — GERENCIAMENTO DE SERVIDORES
+    // ═══════════════════════════════════════════════════════════════════════════
+    {
+      "label": "🖥️ CCA Status",
+      "type": "shell",
+      "command": "cca-admin status",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🔧 CCA Menu Interativo",
+      "type": "shell",
+      "command": "cca-admin",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🐳 CCA Docker Status",
+      "type": "shell",
+      "command": "cca-admin docker",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🌐 CCA Network Scan",
+      "type": "shell",
+      "command": "cca-admin scan 192.168.50.0/24",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "📊 CCA Services",
+      "type": "shell",
+      "command": "cca-admin services",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // CCA THEME — PERSONALIZAÇÃO VISUAL
+    // ═══════════════════════════════════════════════════════════════════════════
+    {
+      "label": "🎨 Theme: Catppuccin Mocha",
+      "type": "shell",
+      "command": "cca-theme mocha",
+      "group": "none",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🎨 Theme: Dracula",
+      "type": "shell",
+      "command": "cca-theme dracula",
+      "group": "none",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🎨 Theme: CCA Corporate",
+      "type": "shell",
+      "command": "cca-theme corporate",
+      "group": "none",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🎨 Theme Status",
+      "type": "shell",
+      "command": "cca-theme status",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // DEPLOY — SERVIDORES
+    // ═══════════════════════════════════════════════════════════════════════════
+    {
+      "label": "🚀 Deploy Dev Server",
+      "type": "shell",
+      "command": "ssh root@192.168.50.200 'cd /root/aplicativo-celular-cca && git pull && pnpm install && pm2 restart cca-diarias-api'",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🚀 Deploy Produção",
+      "type": "shell",
+      "command": "ssh root@138.197.46.13 'cd /root/aplicativo-celular-cca && git pull && pnpm install && pm2 restart cca-diarias-api'",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "📋 Deploy Website",
+      "type": "shell",
+      "command": "cd ~/git/cca-website && docker-compose up -d --build",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // SSH — CONEXÕES RÁPIDAS
+    // ═══════════════════════════════════════════════════════════════════════════
+    {
+      "label": "🔑 SSH: Dev Server",
+      "type": "shell",
+      "command": "ssh root@192.168.50.200",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🔑 SSH: Produção",
+      "type": "shell",
+      "command": "ssh root@138.197.46.13",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🔑 SSH: Proxmox",
+      "type": "shell",
+      "command": "ssh root@192.168.50.100",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🔑 SSH: Home Assistant",
+      "type": "shell",
+      "command": "ssh root@192.168.50.102",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // DEV — BUILD E TESTES
+    // ═══════════════════════════════════════════════════════════════════════════
+    {
+      "label": "📦 pnpm install",
+      "type": "shell",
+      "command": "pnpm install",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🏗️ pnpm build",
+      "type": "shell",
+      "command": "pnpm build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "🔥 pnpm dev",
+      "type": "shell",
+      "command": "pnpm dev",
+      "group": "none",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🧪 pnpm test",
+      "type": "shell",
+      "command": "pnpm test",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🔍 pnpm lint",
+      "type": "shell",
+      "command": "pnpm lint",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "📱 Capacitor Sync",
+      "type": "shell",
+      "command": "npx cap sync android",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // GIT — OPERAÇÕES COMUNS
+    // ═══════════════════════════════════════════════════════════════════════════
+    {
+      "label": "📤 Git Push",
+      "type": "shell",
+      "command": "git push",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "📥 Git Pull All Repos",
+      "type": "shell",
+      "command": "cd ~/git && for d in */; do echo \">>> $d\" && git -C \"$d\" pull --ff-only 2>/dev/null || true; done",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "📊 Git Status All",
+      "type": "shell",
+      "command": "cd ~/git && for d in */; do status=$(git -C \"$d\" status --porcelain 2>/dev/null); [ -n \"$status\" ] && echo \">>> $d has changes\"; done",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // ANDROID — MOBILE DEV
+    // ═══════════════════════════════════════════════════════════════════════════
+    {
+      "label": "📱 Scrcpy S24 Ultra",
+      "type": "shell",
+      "command": "s24",
+      "group": "none",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "📱 ADB Devices",
+      "type": "shell",
+      "command": "adb devices -l",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // DATABASE — POSTGRESQL
+    // ═══════════════════════════════════════════════════════════════════════════
+    {
+      "label": "🗄️ PSQL Dev",
+      "type": "shell",
+      "command": "psql -h 192.168.50.200 -U postgres -d cca_diarias",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🗄️ Sync DB Prod → Dev",
+      "type": "shell",
+      "command": "cca-admin db sync",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // DOCKER
+    // ═══════════════════════════════════════════════════════════════════════════
+    {
+      "label": "🐳 Docker PS",
+      "type": "shell",
+      "command": "docker ps --format 'table {{.Names}}\\t{{.Status}}\\t{{.Ports}}'",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🐳 Docker Compose Up",
+      "type": "shell",
+      "command": "docker-compose up -d",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🐳 Docker Logs (follow)",
+      "type": "shell",
+      "command": "docker-compose logs -f --tail=100",
+      "group": "none",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // UTILIDADES
+    // ═══════════════════════════════════════════════════════════════════════════
+    {
+      "label": "🧹 Clear Terminal",
+      "type": "shell",
+      "command": "clear",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "📊 System Resources",
+      "type": "shell",
+      "command": "btop",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🔄 Reload ZSH Config",
+      "type": "shell",
+      "command": "source ~/.zshrc && echo 'ZSH reloaded!'",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
