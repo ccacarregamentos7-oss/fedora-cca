@@ -1,0 +1,42 @@
+[user]
+	name = CoCoNai
+	email = ccacarregamentos7@gmail.com
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
+[core]
+	editor = code --wait
+[credential]
+	helper = store
+[push]
+	autoSetupRemote = true
+[fetch]
+	prune = true
+[alias]
+	st = status -sb
+	co = checkout
+	br = branch
+	cm = commit -m
+	lg = log --oneline --graph --all --decorate
+	last = log -1 HEAD --stat
+	undo = reset HEAD~1 --mixed
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

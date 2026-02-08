@@ -1,0 +1,31 @@
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+
+# Secrets — NUNCA commitar
+*.env
+*.pem
+*.key
+id_rsa*
+*.p12
+
+# Node
+node_modules/
+
+# Cache
+.cache/
+__pycache__/
+
+# Backups locais
+*.bak
+*.orig
